@@ -1,0 +1,206 @@
+<div class="container">
+  <button
+    class="btn btn-outline-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#add"
+  >
+    Add
+  </button>
+  <br />
+  <table class="mt-1 text-center table table-borderless table-hover text-black">
+    <thead>
+      <tr class="border">
+        <th class="border">Id</th>
+        <th class="border">Name</th>
+        <th class="border">Price</th>
+        <th class="border">Quantity</th>
+        <th class="border">Image</th>
+        <th class="border">Details</th>
+        <th class="border">Update</th>
+        <th class="border">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="border" ng-repeat="p in products">
+        <td class="border">{{p.id}}</td>
+        <td class="border">{{p.name}}</td>
+        <td class="border">{{p.price}}</td>
+        <td class="border">{{p.quantity}}</td>
+        <td class="border"><img src="{{p.image}}" alt="" /></td>
+        <td class="border">
+          <button
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            ng-click="detail(p)"
+          >
+            Details
+          </button>
+        </td>
+        <td class="border">
+          <button
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+            ng-click="detail(p)"
+          >
+            Update
+          </button>
+        </td>
+        <td class="border">
+          <button class="btn btn-primary" ng-click="delete(p.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!--  -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Details</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>Id - {{selectedProduct.id}}</p>
+        <p>Name - {{selectedProduct.name}}</p>
+        <p>Price - {{selectedProduct.price}}</p>
+        <p>Quantity - {{selectedProduct.quantity}}</p>
+        <img src="{{selectedProduct.image}}" alt="" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  -->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Update</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <input
+          type="text"
+          class="input-group-text"
+          ng-model="selectedProduct.id"
+        />
+        <input
+          type="text"
+          class="input-group-text"
+          ng-model="selectedProduct.name"
+        />
+        <input
+          type="text"
+          class="input-group-text"
+          ng-model="selectedProduct.price"
+        />
+        <input
+          type="text"
+          class="input-group-text"
+          ng-model="selectedProduct.quantity"
+        />
+        <input
+          type="text"
+          class="input-group-text"
+          ng-model="selectedProduct.image"
+        />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          ng-click="update(selectedProduct.id)"
+        >
+          Update
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  -->
+<div
+  class="modal fade"
+  id="add"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Add</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <input
+          type="text"
+          class="input-group-text"
+          ng-model="name"
+          placeholder="Name"
+        />
+        <input
+          type="text"
+          class="input-group-text"
+          ng-model="price"
+          placeholder="Price"
+        />
+        <input
+          type="text"
+          class="input-group-text"
+          ng-model="quantity"
+          placeholder="Quantity"
+        />
+        <input
+          type="text"
+          class="input-group-text"
+          ng-model="image"
+          placeholder="Image"
+        />
+        <button class="btn btn-outline-primary" ng-click="add()">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
