@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-5">
   <button
     class="btn btn-outline-primary"
     data-bs-toggle="modal"
@@ -7,7 +7,7 @@
     Add
   </button>
   <br />
-  <table class="mt-1 text-center table table-borderless table-hover text-black">
+  <table class="mt-4 text-center table table-borderless table-hover text-black">
     <thead>
       <tr class="border">
         <th class="border">Id</th>
@@ -29,7 +29,7 @@
         <td class="border"><img src="{{p.image}}" alt="" /></td>
         <td class="border">
           <button
-            class="btn btn-primary"
+            class="btn btn-outline-primary"
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
             ng-click="detail(p)"
@@ -39,7 +39,7 @@
         </td>
         <td class="border">
           <button
-            class="btn btn-primary"
+            class="btn btn-outline-primary"
             data-bs-toggle="modal"
             data-bs-target="#staticBackdrop"
             ng-click="detail(p)"
@@ -48,7 +48,7 @@
           </button>
         </td>
         <td class="border">
-          <button class="btn btn-primary" ng-click="delete(p.id)">
+          <button class="btn btn-outline-primary" ng-click="delete(p.id)">
             Delete
           </button>
         </td>
@@ -56,7 +56,7 @@
     </tbody>
   </table>
 </div>
-<!--  -->
+<!-- details -->
 <div
   class="modal fade"
   id="exampleModal"
@@ -90,7 +90,7 @@
     </div>
   </div>
 </div>
-<!--  -->
+<!--  update-->
 <div
   class="modal fade"
   id="staticBackdrop"
@@ -144,7 +144,7 @@
         </button>
         <button
           type="button"
-          class="btn btn-primary"
+          class="btn btn-outline-primary"
           ng-click="update(selectedProduct.id)"
         >
           Update
@@ -153,7 +153,7 @@
     </div>
   </div>
 </div>
-<!--  -->
+<!--add  -->
 <div
   class="modal fade"
   id="add"

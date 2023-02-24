@@ -16,6 +16,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
     <script>
       var app = angular.module("app", ["ngRoute"]);
+      // create update delete read
+      //get data from server
       window.trangChuController = function ($scope, $http) {
         $scope.getData = function () {
           $http
@@ -26,6 +28,7 @@
         };
         $scope.getData();
       };
+      // c-r-u-d for management products
       window.quanLyController = function ($scope, $http) {
         $scope.getData = function () {
           $http
@@ -37,48 +40,60 @@
         $scope.detail = function (product) {
           $scope.selectedProduct = product;
         };
+
         $scope.delete = function (id) {
-          $http
-            .delete(
-              "https://63edbc0c388920150dd1f524.mockapi.io/PH22339/baithi/" + id
-            )
-            .then(function (response) {
-              alert("Delete successful");
-            });
+          let text = "Press a button!\nClick OK or Cancel.";
+          if (confirm(text) == true) {
+            $http
+              .delete(
+                "https://63edbc0c388920150dd1f524.mockapi.io/PH22339/baithi/" +
+                  id
+              )
+              .then(function (response) {
+                alert("Delete successful");
+              });
+          }
         };
         $scope.update = function (id) {
-          $http
-            .put(
-              "https://63edbc0c388920150dd1f524.mockapi.io/PH22339/baithi/" +
-                id,
-              {
-                name: $scope.selectedProduct.name,
-                price: $scope.selectedProduct.price,
-                quantity: $scope.selectedProduct.quantity,
-                image: $scope.selectedProduct.image,
-              }
-            )
-            .then(function (response) {
-              alert("update successful");
-            });
+          let text = "Press a button!\nClick OK or Cancel.";
+          if (confirm(text) == true) {
+            $http
+              .put(
+                "https://63edbc0c388920150dd1f524.mockapi.io/PH22339/baithi/" +
+                  id,
+                {
+                  name: $scope.selectedProduct.name,
+                  price: $scope.selectedProduct.price,
+                  quantity: $scope.selectedProduct.quantity,
+                  image: $scope.selectedProduct.image,
+                }
+              )
+              .then(function (response) {
+                alert("update successful");
+              });
+          }
         };
         $scope.add = function () {
-          $http
-            .post(
-              "https://63edbc0c388920150dd1f524.mockapi.io/PH22339/baithi",
-              {
-                name: $scope.name,
-                price: $scope.price,
-                quantity: $scope.quantity,
-                image: $scope.image,
-              }
-            )
-            .then(function (response) {
-              alert("Add successful");
-            });
+          let text = "Press a button!\nClick OK or Cancel.";
+          if (confirm(text) == true) {
+            $http
+              .post(
+                "https://63edbc0c388920150dd1f524.mockapi.io/PH22339/baithi",
+                {
+                  name: $scope.name,
+                  price: $scope.price,
+                  quantity: $scope.quantity,
+                  image: $scope.image,
+                }
+              )
+              .then(function (response) {
+                alert("Add successful");
+              });
+          }
         };
         $scope.getData();
       };
+      //router
       app.config(function ($routeProvider, $locationProvider) {
         $locationProvider.hashPrefix("");
         $routeProvider
@@ -94,7 +109,7 @@
     </script>
   </head>
   <body ng-app="app">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
       <div class="container-fluid">
         <button
           class="navbar-toggler"
